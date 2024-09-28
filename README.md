@@ -6,6 +6,8 @@ simplfy things
 - React-native-vector-icons
 - React Native Navigations
 - React Native WebView
+- Nativewind
+- Tailwind Css
 - Axios
 - AsynStorage
 - TypeScript
