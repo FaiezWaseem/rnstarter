@@ -1,9 +1,8 @@
 import * as React from "react"
-import Box from "./Box"
-import Text from "./Text"
+import { View, Text } from "react-native"
 import { ActivityIndicator } from "react-native"
 
-export default ({ isVisible, message, showMessage, subWidth, backLayer = "rgba(0,0,0,0.5)" }: {
+export default ({ isVisible, message, showMessage }: {
     isVisible: boolean
     message?: string
     showMessage?: boolean
@@ -11,21 +10,15 @@ export default ({ isVisible, message, showMessage, subWidth, backLayer = "rgba(0
     backLayer?: string
 }) => {
     if (isVisible) {
-        return <Box
-            justifyContent={"center"}
-            alignItems="center"
-            position={"absolute"}
-            w={"100%"}
-            h={"100%"}
-            zIndex={999}
-            bg={backLayer}
+        return <View
+            className={`flex-1 w-full h-full justify-center items-center absolute z-50 bg-transparent`}
         >
-            <Box w={subWidth} p={8} rounded={8} bg={"#121212"} flexDirection="row">
+            <View className={`px-2 py-5 bg-[#121212] flex-col min-w-[180px] justify-center items-center rounded-lg`}>
                 <ActivityIndicator size="large" color="white" />
-                {showMessage && <Text color="white" fontSize={16} mt={10} >{message ? message : "Loading..."}</Text>}
-            </Box>
-        </Box>
+                {showMessage && <Text className="text-white font-md my-4" >{message ? message : "Loading..."}</Text>}
+            </View>
+        </View>
     } else {
-        return <Box></Box>
+        return <View></View>
     }
 }
